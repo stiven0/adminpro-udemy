@@ -1,9 +1,11 @@
   import { BrowserModule } from '@angular/platform-browser';
   import { NgModule } from '@angular/core';
+  import { FormsModule } from '@angular/forms';
 
   import { AppComponent } from './app.component';
   import { LoginComponent } from './login/login.component';
   import { RegisterComponent } from './login/register.component';
+  // import { IncrementadorComponent } from './componentes/incrementador/incrementador.component';
 
   // modulos personalizados
   import { PagesModule } from './pages/pages.modulo';
@@ -16,13 +18,14 @@
     declarations: [
       AppComponent,
       LoginComponent,
-      RegisterComponent
+      RegisterComponent,
     ],
     imports: [
       BrowserModule,
       PagesModule,
       SharedModule,
-      APP_ROUTES
+      APP_ROUTES,
+      FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

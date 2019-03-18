@@ -1,0 +1,16 @@
+
+
+  <!-- graficas doughnut -->
+  <div>
+    <div>
+      <h3>{{ leyendaGrafico }}</h3>
+      <div style="display: block">
+        <canvas baseChart
+                [data]="dataGrafico"
+                [labels]="labelsGrafico"
+                [chartType]="typeGrafico">
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <!--  -->
