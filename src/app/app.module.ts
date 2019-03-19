@@ -5,7 +5,6 @@
   import { AppComponent } from './app.component';
   import { LoginComponent } from './login/login.component';
   import { RegisterComponent } from './login/register.component';
-  // import { IncrementadorComponent } from './componentes/incrementador/incrementador.component';
 
   // modulos personalizados
   import { PagesModule } from './pages/pages.modulo';
@@ -13,6 +12,9 @@
 
   // rutas
   import { APP_ROUTES } from './app.routes';
+
+  // servicios
+  import { ServiceModule } from './services/service.module';
 
   @NgModule({
     declarations: [
@@ -25,7 +27,8 @@
       PagesModule,
       SharedModule,
       APP_ROUTES,
-      FormsModule
+      FormsModule,
+      ServiceModule
     ],
     providers: [],
     bootstrap: [AppComponent]

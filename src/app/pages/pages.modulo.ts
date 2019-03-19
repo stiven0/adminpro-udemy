@@ -20,6 +20,7 @@
   import { Graficas1Component } from './graficas1/graficas1.component';
   import { IncrementadorComponent } from '../componentes/incrementador/incrementador.component';
   import { GraficoDonaComponent } from '../componentes/grafico-dona/grafico-dona.component';
+  import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
   @NgModule({
     declarations : [
@@ -28,7 +29,8 @@
       ProgressComponent,
       Graficas1Component,
       IncrementadorComponent,
-      GraficoDonaComponent
+      GraficoDonaComponent,
+      AccountSettingsComponent
     ],
     // modulos requeridos para que funcione los elementos de este modulo
     imports : [
