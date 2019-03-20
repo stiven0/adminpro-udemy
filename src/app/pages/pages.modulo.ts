@@ -21,6 +21,8 @@
   import { IncrementadorComponent } from '../componentes/incrementador/incrementador.component';
   import { GraficoDonaComponent } from '../componentes/grafico-dona/grafico-dona.component';
   import { AccountSettingsComponent } from './account-settings/account-settings.component';
+  import { PromesasComponent } from './promesas/promesas.component';
+  import { RxjsComponent } from './rxjs/rxjs.component';
 
   @NgModule({
     declarations : [
@@ -30,7 +32,9 @@
       Graficas1Component,
       IncrementadorComponent,
       GraficoDonaComponent,
-      AccountSettingsComponent
+      AccountSettingsComponent,
+      PromesasComponent,
+      RxjsComponent
     ],
     // modulos requeridos para que funcione los elementos de este modulo
     imports : [
