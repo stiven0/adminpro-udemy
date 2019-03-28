@@ -1,6 +1,7 @@
 
   import { Routes, RouterModule } from '@angular/router';
 
+  import { ProfileComponent } from './profile/profile.component';
   import { PagesComponent } from './pages.component';
   import { DashboardComponent } from './dashboard/dashboard.component';
   import { Graficas1Component } from './graficas1/graficas1.component';
@@ -18,6 +19,7 @@
           canActivate : [ LoginGuardGuard ], // proteger rutas
           children : [
             { path: 'dashboard', component : DashboardComponent, data : {titulo : 'Dashboard'} },
+            { path: 'profile', component : ProfileComponent, data : { titulo : 'Perfil de usuario'} },
             { path: 'progress', component : ProgressComponent, data : {titulo : 'Progress'} },
             { path: 'graficas1', component : Graficas1Component, data : {titulo : 'Graficas'} },
             { path: 'account-settings', component : AccountSettingsComponent, data : {titulo : 'Ajustes del tema'} },

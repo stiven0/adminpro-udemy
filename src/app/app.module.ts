@@ -14,14 +14,14 @@
   // rutas
   import { APP_ROUTES } from './app.routes';
 
-  // servicios
+  // servicios modulo
   import { ServiceModule } from './services/service.module';
 
   @NgModule({
     declarations: [
       AppComponent,
       LoginComponent,
-      RegisterComponent
+      RegisterComponent,
     ],
     imports: [
       BrowserModule,

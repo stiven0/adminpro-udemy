@@ -7,6 +7,9 @@
   // modulo que permite trabajar con rutas de angular
   import { RouterModule } from '@angular/router';
 
+  // pipe modulo
+  import { PipesModule } from '../pipes/pipes.module';
+
   import { HeaderComponent } from './header/header.component';
   import { SidebarComponent } from './sidebar/sidebar.component';
   import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
@@ -21,7 +24,8 @@
     ],
     imports : [
       RouterModule,
-      CommonModule
+      CommonModule,
+      PipesModule
     ],
     exports : [
       HeaderComponent,

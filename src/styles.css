@@ -6,3 +6,11 @@
   .pointer {
     cursor: pointer;
   }
+
+  button, [disabled]{
+      cursor: not-allowed;
+  }
+
+  .w150 {
+    width: 150px;
+  }

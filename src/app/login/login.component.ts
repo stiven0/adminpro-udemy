@@ -53,7 +53,6 @@
         // let profile = googleUser.getBasicProfile();
 
         let token = googleUser.getAuthResponse().id_token; // obtener token de google
-        console.log(token);
 
         // servicio para logueo de google, le pasamos el token
         this._usuarioServicio.loginGoogle(token).subscribe(

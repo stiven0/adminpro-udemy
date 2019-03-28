@@ -1,6 +1,7 @@
   // modulo personalizado para los componentes de pages
 
   import { NgModule } from '@angular/core';
+  import { CommonModule } from '@angular/common';
 
   import { FormsModule } from '@angular/forms';
 
@@ -10,11 +11,15 @@
   // modulo shared
   import { SharedModule } from '../shared/shared.module';
 
+  // pipes modulo
+  import { PipesModule } from '../pipes/pipes.module';
+
   // rutas de PagesComponent
   import { PAGES_ROUTES } from './pages.routes';
 
   import { PagesComponent } from './pages.component';
 
+  import { ProfileComponent } from './profile/profile.component';
   import { DashboardComponent } from './dashboard/dashboard.component';
   import { ProgressComponent } from './progress/progress.component';
   import { Graficas1Component } from './graficas1/graficas1.component';
@@ -34,14 +39,17 @@
       GraficoDonaComponent,
       AccountSettingsComponent,
       PromesasComponent,
-      RxjsComponent
+      RxjsComponent,
+      ProfileComponent
     ],
     // modulos requeridos para que funcione los elementos de este modulo
     imports : [
       SharedModule,
       PAGES_ROUTES,
       FormsModule,
-      ChartsModule
+      ChartsModule,
+      PipesModule,
+      CommonModule
     ],
     // elementos que seran utilizados en otros modulos o lugares
     exports : [
