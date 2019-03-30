@@ -34,7 +34,7 @@
                                         <div class="card">
                                             <div class="card-body"align="center">
                                                 <h4 class="card-title">Fotografia del usuario</h4>
-                                                <h6 class="card-subtitle">photo</h6>
+                                                <h6 class="card-subtitle">{{ usuario.nombre }}</h6>
 
                                                 <img *ngIf="!imagenTemporal" [src]=" usuario.img | imagen" class="w150">
                                                 <img *ngIf="imagenTemporal" [src]=" imagenTemporal " class="w150">

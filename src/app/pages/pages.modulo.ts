@@ -28,6 +28,8 @@
   import { AccountSettingsComponent } from './account-settings/account-settings.component';
   import { PromesasComponent } from './promesas/promesas.component';
   import { RxjsComponent } from './rxjs/rxjs.component';
+  import { UsuariosComponent } from './usuarios/usuarios.component';
+  import { ModalUploadComponent } from '../componentes/modal-upload/modal-upload.component';
 
   @NgModule({
     declarations : [
@@ -40,7 +42,9 @@
       AccountSettingsComponent,
       PromesasComponent,
       RxjsComponent,
-      ProfileComponent
+      ProfileComponent,
+      UsuariosComponent,
+      ModalUploadComponent
     ],
     // modulos requeridos para que funcione los elementos de este modulo
     imports : [

@@ -1,0 +1,93 @@
+
+  <div class="row animated fadeIn">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <input #input (keyup)="buscarUsuario(input.value)" type="text"class="form-control" placeholder="Buscar usuarios...">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+      <div class="alter alert-warning text-center">
+        <strong>Cargando...</strong>
+        <br/>
+        <i class="fa fa-refresh fa-spin fa-2x"></i>
+        <br/>
+        <span>Espere por favor</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <h3 *ngIf="cero_resultados">No hay usuarios que coincidan con tu busqueda</h3>
+
+          <h3 *ngIf="totalRegistro && !cero_resultados" class="card-title">Usuarios registrados ( <small>{{ totalRegistro }}</small> )</h3>
+
+          <!-- tabla -->
+          <table class="table table-hover" *ngIf="!cero_resultados">
+
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Correo</th>
+                <th>Nombre</th>
+                <th>Role</th>
+                <th>Auth</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let usuario of usuarios;let i = index">
+                <td class="w-70">
+                  <img [src]=" usuario.img | imagen " class="img-50 img-circle pointer" (click)="mostrarM(usuario._id)">
+                </td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.nombre }}</td>
+                <td>
+                  <select [(ngModel)]="usuario.role" class="form-control pointer" name="role">
+                    <option value="ADMIN_ROLE">ADMIN_ROLE</option>
+                    <option value="USER_ROLE">USER_ROLE</option>
+                  </select>
+                </td>
+                <td>
+                  <label *ngIf="usuario.google" class="label label-danger">Google</label>
+                  <label *ngIf="!usuario.google" class="label label-primary">Normal</label>
+                </td>
+                <td>
+                  <button class="btn btn-primary" (click)="guardar(usuario)">
+                    <i class="fa fa-save"></i>
+                  </button>
+                  &nbsp;
+                  <button class="btn btn-danger" (click)="borrarUsuarios(usuario, i)" >
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+          <button class="btn btn-secondary" (click)="cambiarDesde(-5)">
+            Anteriores
+          </button>
+
+          <button class="btn btn-secondary" (click)="cambiarDesde(5)">
+            Siguientes
+          </button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>

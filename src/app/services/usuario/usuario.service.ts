@@ -103,16 +103,19 @@
       return this.http.put(this.url + `usuario/${ this.usuario._id }`, datos, { headers })
                       .pipe(map( (response:any) => {
 
-                        localStorage.setItem('usuario', JSON.stringify(response.usuario));
-                        localStorage.setItem('id', response.usuario._id);
-                        localStorage.setItem('token', this.token);
+                        if(datos._id === this.usuario._id ){
+                            localStorage.setItem('usuario', JSON.stringify(response.usuario));
+                            localStorage.setItem('id', response.usuario._id);
+                            localStorage.setItem('token', this.token);
+                        }
+
                         swal('Usuario actualizado', this.usuario.nombre, 'success');
                         return true;
                       }));
 
     };
 
-    // subir archivo al backend
+    // subir imagen al backend
     cambiarImagen(archivo : File, id : string){
 
       // llamamos al servicio subirArchivo y le pasamos los datos
@@ -121,10 +124,37 @@
 
                             this.usuario.img = response.usuario.img;
                             swal('Imagen actualizada', this.usuario.nombre, 'success');
-                            this.guardarLocalstorage(response
+                            this.guardarLocalstorage(response);
                        })
                        .catch(error => console.log(error));
 
+    };
+
+    // obtener usuarios de forma paginada
+    getUsuarios(desde? : number){
+      let headers = new HttpHeaders().set('Content-Type', 'application/json');
+      return this.http.get(this.url + `usuario/?desde=${ desde }`, { headers });
+    };
+
+    // buscar por coleccion de usuarios
+    buscarUsuarios(termino : string){
+      let headers = new HttpHeaders().set('Content-Type', 'application/json');
+      return this.http.get(this.url + 'busqueda/coleccion/usuarios/' + termino, { headers })
+                      .pipe(map(response => response['usuarios']));
+    };
+
+    // buscar en todas las colecciones
+    busquedaGeneral(termino : string){
+      let headers = new HttpHeaders().set('Content-Type', 'application/json');
+      return this.http.get(this.url + 'busqueda/todo/' + termino, { headers });
+    };
+
+    // borrar usuario
+    borrarUsuario(id : string){
+      let headers = new HttpHeaders().set('token', this.token)
+                                     .set('Content-Type', 'application/json');
+      return this.http.delete(this.url + 'usuario/' + id, { headers })
+                      .pipe(map(response => response['ok']));
     };
 
   }

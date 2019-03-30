@@ -63,13 +63,10 @@
       // inicializamos la imagenTemporal con la imagen en base 64 que devuelve el reader
       reader.onloadend = () => this.imagenTemporal = reader.result;
 
-
-
     };
 
     // boton que permitira el cambio de imagen
     cambiarImagen(){
       this._usuarioServicio.cambiarImagen(this.imagenSubir, this.usuario._id);
-    
     };
   }
