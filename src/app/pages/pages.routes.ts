@@ -10,8 +10,12 @@
   import { PromesasComponent } from './promesas/promesas.component';
   import { RxjsComponent } from './rxjs/rxjs.component';
   import { UsuariosComponent } from './usuarios/usuarios.component';
+  import { HospitalesComponent } from './hospitales/hospitales.component';
+  import { MedicosComponent } from './medicos/medicos.component';
+  import { MedicoComponent } from './medicos/medico.component';
 
   import { LoginGuardGuard } from '../services/guards/login-guard.guard';
+
 
   const pagesRoutes : Routes = [
 
@@ -29,7 +33,10 @@
             { path: 'rxjs', component: RxjsComponent, data : {titulo : 'Rxjs'} },
 
             // Mantenimientos
-            { path: 'usuarios', component : UsuariosComponent, data : {titulo : 'Mantenimiento de usuarios'} },
+            { path: 'usuarios', component : UsuariosComponent, data : { titulo : 'Mantenimiento de usuarios'} },
+            { path: 'hospitales', component : HospitalesComponent, data : { titulo : 'Mantenimiento de hospitales' } },
+            { path: 'medicos', component : MedicosComponent, data : { titulo : 'Mantenimiento de medicos' } },
+            { path: 'medico/:id', component : MedicoComponent, data : { titulo : 'Mantenimiento de medico' } },
             { path: '', redirectTo : '/dashboard', pathMatch : 'full' }, // ruta vacia redirecionar el dashboard
             ]
     }

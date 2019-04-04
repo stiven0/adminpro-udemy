@@ -1,0 +1,87 @@
+
+ <div class="row animated fadeIn">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <input #input (keyup)="buscarHospital(input.value)" type="text"class="form-control" placeholder="Buscar hospital...">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+      <div class="alter alert-warning text-center">
+        <strong>Cargando...</strong>
+        <br/>
+        <i class="fa fa-refresh fa-spin fa-2x"></i>
+        <br/>
+        <span>Espere por favor</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+
+          <h3 *ngIf="cero_resultados">No hay Hospitales que coincidan con tu busqueda</h3>
+
+          <h3 *ngIf="totalRegistro && !cero_resultados" class="card-title">Hospitales registrados ( <small>{{ totalRegistro }}</small> )</h3>
+
+          <div class="text-right">
+            <button type="button" class="btn waves-effect waves-light btn-rounded btn-outline-primary" (click)="crearHospital()">
+              <i class="fa fa-plus"></i> Crear hospital
+            </button>
+          </div>
+
+
+          <!-- tabla -->
+          <table class="table table-hover" *ngIf="!cero_resultados">
+
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Hospital</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let hospital of hospitales;let i = index">
+                <td class="w-70">
+                  <img [src]=" hospital.img | imagen:'hospitales' " class="img-50 pointer" (click)="mostrarM(hospital._id)">
+                </td>
+                <td>
+                  <input #input_hospital [(ngModel)]="hospital.nombre" type="text"class="form-control">
+                </td>
+                <td>
+                  <button class="btn btn-primary" (click)="actualizar(input_hospital.value, hospital)">
+                    <i class="fa fa-save"></i>
+                  </button>
+                  &nbsp;
+                  <button class="btn btn-danger" (click)="borrarHospital(hospital, i)" >
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+          <button class="btn btn-secondary" (click)="cambiarDesde(-5)">
+            Anteriores
+          </button>
+
+          <button class="btn btn-secondary" (click)="cambiarDesde(5)">
+            Siguientes
+          </button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>

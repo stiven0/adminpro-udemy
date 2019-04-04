@@ -59,6 +59,7 @@
 
       // le adjucamos el valor this.desde mas el valor que recibimos
       this.desde += valor;
+      console.log(this.desde);
       this.cargarUsuarios();
     };
 

@@ -7,7 +7,7 @@
   })
   export class ImagenPipe implements PipeTransform {
 
-    transform(imagen: string, tipo : string = 'usuarios'): any {
+    transform(imagen: string, tipo : string = 'usuarios' ): any {
 
       // ruta del backend para devolver imagenes
       let url = URL_SERVICE + 'img';
@@ -42,7 +42,6 @@
           console.log('Tipo de imagen no existe, usuarios, medicos, hospitales ', tipo);
           url += '/usuarios/xxx';
       }
-
       return url;
 
     }
