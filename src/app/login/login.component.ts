@@ -90,6 +90,15 @@
         },
         error => {
           console.log(error);
+          if(error.error.message === 'La contraseña es incorrecta'){
+              let error_login = error.error.message;
+              swal('Error en el login', error_login, 'error');
+          }
+
+          if(error.error.message === "El correo es incorrecto"){
+              let error_email = error.error.message;
+              swal('Error en el login', error_email, 'error');
+          }
         });
     };
 

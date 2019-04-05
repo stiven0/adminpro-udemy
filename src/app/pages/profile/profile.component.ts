@@ -32,7 +32,6 @@
       // llamamos al servicio y le pasamos el usuario a actualizar
       this._usuarioServicio.actualizarUsuario(this.usuario).subscribe(
         response => {
-          console.log(response);
         },
         error => {
           console.log(error);

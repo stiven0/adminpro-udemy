@@ -11,10 +11,11 @@
       public usuario : Usuario;
 
     constructor(public _sidebar : SidebarService, private _usuarioService : UsuarioService) {
-        this.usuario = this._usuarioService.usuario;
     }
 
     ngOnInit() {
+      this.usuario = this._usuarioService.usuario;
+      this._sidebar.cargarMenu();
     }
 
   }

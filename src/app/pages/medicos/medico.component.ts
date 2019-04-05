@@ -31,7 +31,9 @@
       });
 
       this._modalServicio.notificacion.subscribe(response => {
-        this.medico.img = response.medico.img;
+        if(response){
+          this.medico.img = response.medico.img;
+        }
       });
 
       // comprobar si el id viene por el url

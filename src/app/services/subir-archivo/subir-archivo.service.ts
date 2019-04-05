@@ -29,12 +29,10 @@
 
             // si todo salio correctamente
             if(xhr.status === 200){
-              console.log('imagen subida');
               resolve(JSON.parse(xhr.response));
 
               // si ocurrio un error
             } else {
-                console.log('Fallo la subida');
                 reject(xhr.response);
             }
 

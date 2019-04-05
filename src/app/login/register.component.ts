@@ -67,6 +67,9 @@
 
         error => {
           console.log(error);
+          if(error.error.errors.errors.email.message === 'email debe ser unico'){
+              swal('Error correo', 'Error este correo ya existe, intenta otro', 'error');
+          }
         });
 
     };

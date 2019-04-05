@@ -1,10 +1,11 @@
   import { Injectable } from '@angular/core';
   import { HttpClient, HttpHeaders } from '@angular/common/http';
-  import { map, filter } from 'rxjs/operators';
+  import { map, filter, catchError } from 'rxjs/operators';
   import { Usuario } from '../../models/usuario.model';
   import { URL_SERVICE } from '../../config/config';
   import { Router } from '@angular/router';
   import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
+  import { Observable } from 'rxjs';
 
   @Injectable({
     providedIn: 'root'
@@ -13,6 +14,7 @@
     public url : string;
     public usuario : Usuario;
     public token : string;
+    public menu : any = [];
 
     constructor(private http : HttpClient, private router : Router, private _subirImagen : SubirArchivoService) {
       this.url = URL_SERVICE;
@@ -28,29 +30,36 @@
       if(localStorage.getItem('token')){
           this.token = localStorage.getItem('token');
           this.usuario = JSON.parse(localStorage.getItem('usuario'));
+          this.menu = JSON.parse(localStorage.getItem('menu'));
       } else {
           this.token = '';
           this.usuario = null;
+          this.menu = [];
       }
     };
 
     // funcion para guardar informacion en el localStorage
-    guardarLocalstorage(response){
+    guardarLocalstorage(response, menu? : any){
       localStorage.setItem('id', response.id);
       localStorage.setItem('token', response.token);
       localStorage.setItem('usuario', JSON.stringify(response.usuario));
+      localStorage.setItem('menu', JSON.stringify(menu));
 
       this.usuario = response.usuario;
       this.token = response.token;
+      this.menu = menu;
     };
 
     // salir de la aplicacion
     Logout(){
       this.usuario = null;
       this.token = '';
+      this.menu = [];
+
       localStorage.removeItem('token');
       localStorage.removeItem('usuario');
       localStorage.removeItem('id');
+      localStorage.removeItem('menu');
 
       this.router.navigate(['/login']);
     };
@@ -79,10 +88,10 @@
       let headers = new HttpHeaders().set('Content-Type', 'application/json');
       return this.http.post(this.url + 'login', usuario, { headers })
                       .pipe(map(response => {
-
-                            this.guardarLocalstorage(response);
+                            this.guardarLocalstorage(response, response['menu']);
                             return true;
                       }));
+                      
     };
 
 
@@ -91,7 +100,7 @@
       return this.http.post(this.url + 'login/google', { tokenGoogle })
                       .pipe(map(response => {
 
-                        this.guardarLocalstorage(response);
+                        this.guardarLocalstorage(response, response['menu']);
                         return true;
                       }));
     };
@@ -107,6 +116,7 @@
                             localStorage.setItem('usuario', JSON.stringify(response.usuario));
                             localStorage.setItem('id', response.usuario._id);
                             localStorage.setItem('token', this.token);
+                            localStorage.setItem('menu', JSON.stringify(this.menu));
                         }
 
                         swal('Usuario actualizado', this.usuario.nombre, 'success');
