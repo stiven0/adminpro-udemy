@@ -11,7 +11,7 @@
   export class HeaderComponent implements OnInit {
     public usuario : Usuario;
 
-    constructor(private _usuarioServicio : UsuarioService, private router : Router) {
+    constructor(public _usuarioServicio : UsuarioService, private router : Router) {
       this.usuario = this._usuarioServicio.usuario;
     }
 

@@ -4,7 +4,7 @@
   import { ModalUploadService } from '../componentes/modal-upload/modal-upload.service';
 
   import { SettingsService, SharedService, SidebarService, SubirArchivoService,
-           LoginGuardGuard, UsuarioService, HospitalService, MedicoService, AdminGuard } from './service.index';
+           LoginGuardGuard, UsuarioService, HospitalService, MedicoService, AdminGuard, VerificaTokenGuard } from './service.index';
 
 
   @NgModule({
@@ -20,7 +20,8 @@
       SubirArchivoService,
       ModalUploadService,
       HospitalService,
-      MedicoService
+      MedicoService,
+      VerificaTokenGuard
     ],
     imports: [
       CommonModule,

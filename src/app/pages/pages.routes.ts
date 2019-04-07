@@ -17,16 +17,15 @@
 
   import { LoginGuardGuard } from '../services/guards/login-guard.guard';
   import { AdminGuard } from '../services/guards/admin.guard';
+  import { VerificaTokenGuard } from '../services/guards/verifica-token.guard';
 
 
   const pagesRoutes : Routes = [
 
     // rutas hijas de PagesComponent
-    { path: '', component: PagesComponent,
-
-          canActivate : [ LoginGuardGuard ], // proteger rutas
-          children : [
-            { path: 'dashboard', component : DashboardComponent, data : {titulo : 'Dashboard'} },
+            { path: 'dashboard', component : DashboardComponent,
+              canActivate : [VerificaTokenGuard], // guards para VerificaTokenGuard
+              data : {titulo : 'Dashboard'} },
             { path: 'profile', component : ProfileComponent, data : { titulo : 'Perfil de usuario'} },
             { path: 'progress', component : ProgressComponent, data : {titulo : 'Progress'} },
             { path: 'graficas1', component : Graficas1Component, data : {titulo : 'Graficas'} },
@@ -41,13 +40,11 @@
             { path: 'usuarios', component : UsuariosComponent,
               canActivate : [ AdminGuard ],
               data : { titulo : 'Mantenimiento de usuarios'} },
-              
+
             { path: 'hospitales', component : HospitalesComponent, data : { titulo : 'Mantenimiento de hospitales' } },
             { path: 'medicos', component : MedicosComponent, data : { titulo : 'Mantenimiento de medicos' } },
             { path: 'medico/:id', component : MedicoComponent, data : { titulo : 'Mantenimiento de medico' } },
             { path: '', redirectTo : '/dashboard', pathMatch : 'full' }, // ruta vacia redirecionar el dashboard
-            ]
-    }
 
   ];
 

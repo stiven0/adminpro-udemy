@@ -17,7 +17,7 @@
   // rutas de PagesComponent
   import { PAGES_ROUTES } from './pages.routes';
 
-  import { PagesComponent } from './pages.component';
+  // import { PagesComponent } from './pages.component';
 
   import { ProfileComponent } from './profile/profile.component';
   import { DashboardComponent } from './dashboard/dashboard.component';
@@ -29,7 +29,7 @@
   import { PromesasComponent } from './promesas/promesas.component';
   import { RxjsComponent } from './rxjs/rxjs.component';
   import { UsuariosComponent } from './usuarios/usuarios.component';
-  import { ModalUploadComponent } from '../componentes/modal-upload/modal-upload.component';
+  // import { ModalUploadComponent } from '../componentes/modal-upload/modal-upload.component';
   import { HospitalesComponent } from './hospitales/hospitales.component';
   import { MedicosComponent } from './medicos/medicos.component';
   import { MedicoComponent } from './medicos/medico.component';
@@ -37,7 +37,7 @@
 
   @NgModule({
     declarations : [
-      PagesComponent,
+      // PagesComponent,
       DashboardComponent,
       ProgressComponent,
       Graficas1Component,
@@ -48,7 +48,7 @@
       RxjsComponent,
       ProfileComponent,
       UsuariosComponent,
-      ModalUploadComponent,
+      // ModalUploadComponent,
       HospitalesComponent,
       MedicosComponent,
       MedicoComponent,
@@ -65,7 +65,7 @@
     ],
     // elementos que seran utilizados en otros modulos o lugares
     exports : [
-      PagesComponent,
+      // PagesComponent,
       DashboardComponent,
       ProgressComponent,
       Graficas1Component

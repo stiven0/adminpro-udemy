@@ -11,7 +11,7 @@
     public imagenSubir : File;
     public imagenTemporal : any;
 
-    constructor(private _subirImagen : SubirArchivoService, private _moduloUploadService : ModalUploadService) {
+    constructor(private _subirImagen : SubirArchivoService, public _moduloUploadService : ModalUploadService) {
     }
 
     ngOnInit() {

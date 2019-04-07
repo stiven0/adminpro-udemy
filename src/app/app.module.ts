@@ -8,7 +8,6 @@
   import { RegisterComponent } from './login/register.component';
 
   // modulos personalizados
-  import { PagesModule } from './pages/pages.modulo';
   import { SharedModule } from './shared/shared.module';
 
   // rutas
@@ -17,21 +16,24 @@
   // servicios modulo
   import { ServiceModule } from './services/service.module';
 
+  import { PagesComponent } from './pages/pages.component';
+
   @NgModule({
     declarations: [
       AppComponent,
       LoginComponent,
-      RegisterComponent
+      RegisterComponent,
+      PagesComponent
     ],
     imports: [
       BrowserModule,
-      PagesModule,
       SharedModule,
       APP_ROUTES,
       FormsModule,
       ReactiveFormsModule,
       // HttpClientModule,
-      ServiceModule
+      ServiceModule,
+      SharedModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -91,7 +91,7 @@
                             this.guardarLocalstorage(response, response['menu']);
                             return true;
                       }));
-                      
+
     };
 
 
@@ -167,4 +167,25 @@
                       .pipe(map(response => response['ok']));
     };
 
+    // servicio pra renovar token
+    renuevaToken(){
+      let headers = new HttpHeaders().set('token', this.token)
+                                     .set('Content-Type', 'application/json');
+
+      return this.http.get(this.url + 'login/renueva-token', { headers })
+                      .pipe(map(response => {
+
+                        this.token = response['token'];
+                        localStorage.setItem('token', this.token);
+                        console.log('token renovado');
+                        return true;
+                      }));
+
+                      // // manejar error en un servicio atraves de catchError
+                      // catchError(error => {
+                      //   this.router.navigate(['/login']);
+                      //   swal('No se puedo renovar token', 'No fue posible renovar token', 'error');
+                      //   return Observable.throw(error); // retornamo el Observable
+                      // });
+    };
   }
